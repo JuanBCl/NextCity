@@ -1,0 +1,141 @@
+<!-- suscripciones.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suscripciones</title>
+  <link rel="stylesheet" href="css/suscripciones.css">
+  <link rel="stylesheet" href="css/style_index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-logo">🌿 App Ecológica</div>
+  </header>
+
+<main class="suscripciones-main">
+
+  <section class="intro-suscripciones">
+    <h1>Elige tu plan ecológico 🌿</h1>
+    <p>Selecciona la suscripción que mejor se adapte a tu experiencia como <strong>turista</strong> o <strong>empresa</strong>.</p>
+  </section>
+
+  <!-- 🌿 PLANES PARA TURISTAS -->
+  <section class="planes-container">
+    <h2>Planes para Turistas</h2>
+    <div class="planes">
+      <div class="plan-card">
+        <h3>Free</h3>
+        <p>Explora rutas básicas y contenido general.</p>
+        <ul class="benefits">
+            <li>Acceso a rutas básicas</li>
+            <li>Contenido general de la comunidad</li>
+            <li>Vista previa de rutas premium</li>
+        </ul>
+
+        <p class="precio">Gratis</p>
+        <button class="btn-select" data-plan="Free">Seleccionar</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Semanal</h3>
+        <p>Acceso ilimitado a rutas y comunidad.</p>
+        <!-- Lista de beneficios -->
+        <ul class="benefits">
+            <li>Rutas exclusivas</li>
+            <li>Comunidad activa</li>
+            <li>Actualizaciones semanales</li>
+        </ul>
+
+        <p class="precio">$15.000 / semana</p>
+        <button class="btn-select" data-plan="Semanal">Seleccionar</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Mensual</h3>
+        <p>Ideal para viajeros frecuentes y amantes del ecoturismo.</p>
+        <ul class="benefits">
+            <li>Acceso total a todas las rutas</li>
+            <li>Participación en eventos exclusivos</li>
+            <li>Contenido premium y guías descargables</li>
+        </ul>
+
+        <p class="precio">$30.000 / mes</p>
+        <button class="btn-select" data-plan="Mensual">Seleccionar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🏢 PLANES PARA EMPRESAS -->
+  <section class="planes-container empresas">
+    <h2>Planes para Empresas</h2>
+    <div class="planes">
+      <div class="plan-card empresa">
+        <h3>Básico</h3>
+        <p>Publica tu negocio y obtén visibilidad inicial.</p>
+        <ul class="benefits">
+            <li>Publicación de tu empresa en el mapa</li>
+            <li>Visibilidad inicial en la plataforma</li>
+            <li>Acceso básico a estadísticas</li>
+        </ul>
+
+        <p class="precio">$50.000 / mes</p>
+        <button class="btn-select" data-plan="Empresarial Básico">Seleccionar</button>
+      </div>
+
+      <div class="plan-card empresa destacado">
+        <h3>Medio</h3>
+        <p>Acceso a estadísticas y promoción destacada.</p>
+        <ul class="benefits">
+            <li>Promoción destacada en búsquedas</li>
+            <li>Acceso completo a estadísticas y analíticas</li>
+            <li>Soporte prioritario</li>
+        </ul>
+
+        <p class="precio">$90.000 / mes</p>
+        <button class="btn-select" data-plan="Empresarial Medio">Seleccionar</button>
+      </div>
+
+      <div class="plan-card empresa premium">
+        <h3>Premium</h3>
+        <p>Posicionamiento en el mapa y beneficios exclusivos.</p>
+        <ul class="benefits">
+            <li>Posicionamiento destacado en el mapa</li>
+            <li>Beneficios exclusivos y publicidad premium</li>
+            <li>Atención personalizada y consultoría</li>
+        </ul>
+
+        <p class="precio">$150.000 / mes</p>
+        <button class="btn-select" data-plan="Empresarial Premium">Seleccionar</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 🌿 MODAL DE PAGO SIMULADO -->
+<div class="modal-pago" id="modalPago">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" id="cerrarModal">&times;</span>
+
+    <h2>Confirmar suscripción</h2>
+    <p id="planSeleccionadoTexto">Has elegido el plan <strong>Básico</strong></p>
+
+    <div class="metodos-pago">
+      <h3>Método de pago</h3>
+      <div class="opciones-pago">
+        <label><input type="radio" name="metodo" value="Tarjeta" checked> 💳 Tarjeta</label>
+        <label><input type="radio" name="metodo" value="Nequi"> 📱 Nequi</label>
+        <label><input type="radio" name="metodo" value="PayPal"> 🅿️ PayPal</label>
+      </div>
+    </div>
+
+    <button id="btnConfirmarPago" class="btn-confirmar">Confirmar pago</button>
+  </div>
+</div>
+
+<!-- 🧠 Scripts -->
+<script src="js/suscripciones.js"></script>
+
+</body>
+</html>

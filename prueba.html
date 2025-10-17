@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi ubicación hasta Chía</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+</head>
+<body>
+  <div id="map" style="height: 500px;"></div>
+  <script>
+    // Crear mapa
+    var map = L.map('map').setView([4.85, -74.05], 12);
+
+    // Capa base
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Punto destino: Chía
+    var chia = L.latLng(4.8661, -74.0522);
+
+    // Intentar obtener la ubicación actual
+    map.locate({setView: true, maxZoom: 14});
+
+    // Cuando se obtiene la ubicación
+    map.on('locationfound', function(e) {
+      var userLocation = e.latlng;
+
+      // Marcador en mi ubicación
+      L.marker(userLocation).addTo(map).bindPopup("Mi ubicación").openPopup();
+
+      // Control de ruta
+      L.Routing.control({
+        waypoints: [userLocation, chia],
+        routeWhileDragging: true,
+        showAlternatives: false,
+        addWaypoints: false,
+        draggableWaypoints: false,
+        createMarker: function(i, waypoint, n) {
+          if (i === 0) {
+            return L.marker(waypoint.latLng).bindPopup("Tú estás aquí");
+          } else {
+            return L.marker(waypoint.latLng).bindPopup("Chía, Cundinamarca");
+          }
+        }
+      })
+      .on('routesfound', function(e) {
+        var summary = e.routes[0].summary;
+        var distancia = (summary.totalDistance / 1000).toFixed(2);
+        var tiempo = Math.round(summary.totalTime / 60);
+
+        alert("Distancia: " + distancia + " km\nTiempo estimado: " + tiempo + " min");
+      })
+      .addTo(map);
+    });
+
+    // En caso de error con la ubicación
+    map.on('locationerror', function() {
+      alert("No se pudo obtener tu ubicación. Habilita GPS/Ubicación en tu navegador.");
+    });
+  </script>
+</body>
+</html>

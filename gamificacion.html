@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App Ecológica - Gamificación</title>
+  <link rel="stylesheet" href="css/style_index.css" />
+  <link rel="stylesheet" href="css/gamificacion.css" />
+  <link rel="stylesheet" href="css/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+  <div class="navbar-logo">🌿 App Ecológica</div>
+
+  <nav class="navbar-links" id="navbar-links">
+    <a href="index.html">Inicio</a>
+    <a href="explorar.html">Rutas</a>
+    <a href="comunidad.html">Comunidad</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="gamificacion.html">Gamificación</a>
+
+    <!-- 🔹 Botones de login/registro -->
+    <div class="navbar-auth">
+      <a href="auth.html#login" class="btn-auth btn-login">Iniciar sesión</a>
+      <a href="auth.html#register" class="btn-auth btn-register">Registrarse</a>
+    </div>
+
+    <!-- 🔹 Ícono de perfil (visible si hay sesión iniciada) -->
+    <div class="navbar-profile" id="navbarProfile" style="display: none;">
+      <i class="bi bi-person-circle profile-icon" id="profileIcon"></i>
+      <div class="profile-dropdown" id="profileDropdown">
+        <p><strong id="userName">Usuario</strong><br><span id="userEmail">correo@ejemplo.com</span></p>
+        <p>Suscripción: <strong id="userSubscription">Free</strong></p>
+  
+        <!-- Botón que aparece solo si es Free -->
+        <button id="upgradeBtn" style="display:none;">Comprar membresía</button>
+        <hr />
+        <a href="perfil.html">Ver perfil</a>
+        <a href="#" id="logoutBtn">Cerrar sesión</a>
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+  <i class="bi bi-list" style="font-size: 1.8rem;"></i>
+</div>
+</header>
+
+  <main class="main-content gamificacion-main">
+    <h2>Gamificación</h2>
+
+    <section class="eco-tokens">
+      <h3>Eco-Tokens acumulados</h3>
+      <div class="tokens-count">🌱 2450</div>
+    </section>
+
+    <section class="retos">
+      <h3>Retos Activos</h3>
+      <ul id="retosActivosList" class="retos-list">
+        <!-- Retos activos aparecerán aquí -->
+      </ul>
+    </section>
+
+    <section class="retos-completados">
+      <h3>Retos Completados</h3>
+      <ul id="retosCompletadosList" class="retos-list">
+        <!-- Retos completados aparecerán aquí -->
+      </ul>
+    </section>
+
+    <section class="insignias">
+      <h3>Insignias Obtenidas</h3>
+      <div id="insigniasContainer" class="logros-container">
+        <!-- Tarjetas insignias -->
+      </div>
+    </section>
+    
+    <!-- Nueva sección Juegos -->
+  <section class="juegos">
+    <h3>Juegos</h3>
+    <div id="juegosContainer" class="juegos-list">
+      <!-- Juegos aparecerán aquí -->
+    </div>
+  </section>
+
+    <button id="reclamarBtn" class="btn-reclamar">Reclamar Recompensas</button>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 App Ecológica</p>
+  </footer>
+
+  <script src="js/script_gamificacion.js"></script>
+  <script src="js/header2.js"></script>
+</body>
+</html>

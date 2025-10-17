@@ -1,0 +1,222 @@
+/* 🌿 Paleta ecológica */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* 🌱 Estilo general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--verde-claro);
+  color: var(--azul-petroleo);
+  margin: 0;
+  padding: 0;
+}
+
+/* 📦 Contenedor principal */
+.gamificacion-main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--blanco);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.gamificacion-main h2 {
+  text-align: center;
+  color: var(--verde-principal);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 🪙 Eco Tokens */
+.eco-tokens {
+  text-align: center;
+  margin-bottom: 2rem;
+  background-color: var(--verde-claro);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px var(--sombra);
+}
+
+.eco-tokens h3 {
+  color: var(--azul-petroleo);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.tokens-count {
+  font-size: 2rem;
+  color: var(--verde-principal);
+  font-weight: bold;
+  background-color: var(--blanco);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+/* 🎯 Retos */
+.retos {
+  margin-top: 2rem;
+}
+
+.retos h3 {
+  color: var(--verde-principal);
+  border-bottom: 2px solid var(--verde-principal);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.retos-list {
+  list-style: none;
+  padding: 0;
+}
+
+.retos-list li {
+  background-color: var(--gris-claro);
+  border-left: 6px solid var(--verde-principal);
+  margin-bottom: 0.8rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--sombra);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.retos-list li:hover {
+  transform: translateY(-3px);
+}
+
+/* 🏅 Insignias */
+.insignias {
+  margin-top: 2.5rem;
+}
+
+.insignias h3 {
+  color: var(--verde-principal);
+  border-bottom: 2px solid var(--verde-principal);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.logros-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.logro-card {
+  background-color: var(--verde-claro);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--sombra);
+  transition: transform 0.3s ease;
+}
+
+.logro-card:hover {
+  transform: translateY(-4px);
+}
+
+.logro-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.logro-card p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--azul-petroleo);
+}
+
+/* 🎮 Juegos */
+.juegos {
+  margin-top: 2.5rem;
+}
+
+.juegos h3 {
+  color: var(--verde-principal);
+  border-bottom: 2px solid var(--verde-principal);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.juegos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.juego-card {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 3px 8px var(--sombra);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.juego-card:hover {
+  transform: translateY(-4px);
+}
+
+.juego-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+.juego-card h4 {
+  color: var(--azul-petroleo);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.juego-card p {
+  font-size: 0.9rem;
+  color: var(--azul-petroleo);
+}
+
+/* 🎁 Botón Recompensas */
+.btn-reclamar {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-reclamar:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .gamificacion-main {
+    padding: 1.2rem;
+  }
+
+  .tokens-count {
+    font-size: 1.6rem;
+  }
+
+  .juegos-list {
+    grid-template-columns: 1fr;
+  }
+}

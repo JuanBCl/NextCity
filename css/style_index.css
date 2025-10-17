@@ -1,0 +1,323 @@
+/* 🎨 PALETA DE COLORES */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* RESETEO GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--gris-claro);
+  color: var(--azul-petroleo);
+  line-height: 1.6;
+}
+
+/* 🔹 SECCIÓN HERO */
+.hero {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-overlay p {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  color: var(--verde-claro);
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-cta {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+}
+
+.btn-cta:hover {
+  background-color: #256d46;
+  transform: scale(1.05);
+}
+
+.btn-cta.secondary {
+  background-color: var(--amarillo);
+  color: var(--azul-petroleo);
+}
+
+.btn-cta.outline {
+  border: 2px solid var(--blanco);
+  background: transparent;
+}
+
+/* 🔹 DESTINOS */
+.destinos {
+  padding: 4rem 2rem;
+  background-color: var(--blanco);
+  text-align: center;
+}
+
+.destinos h2 {
+  font-size: 2rem;
+  color: var(--azul-petroleo);
+  margin-bottom: 2rem;
+}
+
+.destinos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.destino-card {
+  background-color: var(--verde-claro);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px var(--sombra);
+  transition: transform 0.3s ease;
+}
+
+.destino-card:hover {
+  transform: translateY(-5px);
+}
+
+.destino-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.destino-card h3 {
+  color: var(--azul-petroleo);
+  margin: 1rem 0 0.5rem;
+}
+
+.destino-card p {
+  padding: 0 1rem;
+  font-size: 0.95rem;
+}
+
+.btn-destino {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-destino:hover {
+  background-color: #256d46;
+}
+
+/* 🔹 TOURS */
+.tours {
+  padding: 4rem 2rem;
+  background-color: var(--gris-claro);
+  text-align: center;
+}
+
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tour-card {
+  background-color: var(--blanco);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px var(--sombra);
+  transition: 0.3s;
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+}
+
+.tour-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.btn-tour {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-tour:hover {
+  background-color: #256d46;
+}
+
+/* 🔹 TESTIMONIOS */
+.testimonios {
+  background-color: var(--blanco);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.testimonios-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.testimonio {
+  background-color: var(--verde-claro);
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-style: italic;
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+.btn-outline {
+  border: 2px solid var(--verde-principal);
+  color: var(--verde-principal);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+}
+
+/* 🔹 MAPA */
+.mapa {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: var(--verde-claro);
+}
+
+.mapa iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--sombra);
+}
+
+/* 🔹 OFERTAS */
+.ofertas {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: var(--blanco);
+}
+
+.ofertas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.oferta-card {
+  background-color: var(--verde-claro);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--sombra);
+}
+
+.btn-oferta {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--amarillo);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--azul-petroleo);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-oferta:hover {
+  background-color: #e5b83f;
+}
+
+/* 🔹 CONSEJOS */
+.consejos {
+  background-color: var(--verde-claro);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.consejos ul {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.consejos li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 🔹 FOOTER */
+.footer {
+  background-color: var(--azul-petroleo);
+  color: var(--blanco);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,251 @@
+:root {
+  --verde-principal: #2E7D32;
+  --verde-claro: #A5D6A7;
+  --amarillo: #FFCA28;
+  --azul-petroleo: #00695C;
+  --gris-claro: #F5F5F5;
+  --gris-oscuro: #424242;
+  --blanco: #FFFFFF;
+}
+
+
+/* --- ESTILO GENERAL --- */
+.suscripciones-main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.intro-suscripciones {
+  margin-bottom: 2rem;
+}
+
+.intro-suscripciones h1 {
+  color: var(--verde-principal);
+  margin-bottom: 0.5rem;
+}
+
+/* --- PLANES --- */
+.planes-container {
+  margin-bottom: 3rem;
+}
+
+.planes-container h2 {
+  margin-bottom: 1rem;
+  color: var(--azul-petroleo);
+}
+
+.planes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.plan-card {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card h3 {
+  color: var(--verde-principal);
+  margin-bottom: 0.5rem;
+}
+
+.plan-card .precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--azul-petroleo);
+  margin-top: 0.5rem;
+}
+
+.btn-select {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-select:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* --- VERSION EMPRESARIAL --- */
+.empresas .plan-card {
+  border-top: 4px solid var(--verde-principal);
+}
+
+.plan-card.destacado {
+  border-top: 4px solid var(--amarillo);
+}
+
+.plan-card.premium {
+  border-top: 4px solid var(--azul-petroleo);
+}
+
+/* --- MODAL DE PAGO --- */
+.modal-pago {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-contenido {
+  background: var(--blanco);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+  animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gris-oscuro);
+}
+
+.metodos-pago {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.opciones-pago label {
+  display: block;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-confirmar {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .plan-card {
+    width: 90%;
+  }
+
+  .btn-select {
+    width: 100%;
+  }
+
+  .intro-suscripciones h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 🌟 Efecto al seleccionar plan */
+.plan-card.seleccionado {
+  border: 3px solid var(--verde-principal);
+  box-shadow: 0 0 20px rgba(0, 200, 120, 0.4);
+  animation: resaltar 0.5s ease;
+}
+
+@keyframes resaltar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 🌿 Animación más fluida del modal */
+@keyframes aparecerSuave {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-contenido {
+  animation: aparecerSuave 0.35s ease forwards;
+}
+
+.plan-card .benefits {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+  text-align: left;
+  color: var(--azul-petroleo);
+  font-size: 0.95rem;
+}
+
+.plan-card .benefits li {
+  margin-bottom: 0.3rem;
+}
+
+.toast-notificacion {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2e7d32;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  z-index: 1000;
+  font-size: 14px;
+}
+.toast-notificacion.visible {
+  opacity: 1;
+  bottom: 50px;
+}

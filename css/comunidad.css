@@ -1,0 +1,199 @@
+/* 🎨 PALETA DE COLORES */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* RESETEO GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 🔹 ESTILOS GENERALES */
+body {
+  background-color: var(--gris-claro);
+  color: var(--azul-petroleo);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+/* SECCIÓN COMUNIDAD */
+.comunidad-section {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--sombra);
+}
+
+.comunidad-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--azul-petroleo);
+  position: relative;
+}
+
+.comunidad-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--verde-principal);
+  margin: 0.5rem auto 0;
+  border-radius: 4px;
+}
+
+/* 🔸 FORMULARIO DE NUEVA PUBLICACIÓN */
+.form-post {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--verde-claro);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+.form-post textarea {
+  resize: none;
+  padding: 1rem;
+  border: 1px solid var(--verde-principal);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--azul-petroleo);
+  background-color: var(--blanco);
+  transition: 0.3s;
+}
+
+.form-post textarea:focus {
+  outline: none;
+  border-color: var(--amarillo);
+  box-shadow: 0 0 6px rgba(246, 201, 71, 0.4);
+}
+
+.form-post button {
+  align-self: flex-end;
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-post button:hover {
+  background-color: #256d46;
+  transform: scale(1.03);
+}
+
+/* 🔸 CONTENEDOR DE POSTS */
+.posts-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 🔸 TARJETAS DE POSTS */
+.post {
+  background-color: var(--blanco);
+  border: 1px solid var(--verde-claro);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 3px 8px var(--sombra);
+  transition: 0.3s;
+}
+
+.post:hover {
+  transform: translateY(-3px);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--verde-principal);
+}
+
+.post-user i {
+  font-size: 1.4rem;
+  color: var(--azul-petroleo);
+}
+
+.post-time {
+  font-size: 0.8rem;
+  color: #6a7d7d;
+}
+
+.post-content {
+  margin-bottom: 0.8rem;
+  color: var(--azul-petroleo);
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.post-actions button {
+  background: none;
+  border: none;
+  color: var(--verde-principal);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.post-actions button:hover {
+  color: var(--amarillo);
+  transform: scale(1.1);
+}
+
+/* 💬 COMENTARIOS (Opcional si luego agregas) */
+.comments {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--verde-principal);
+}
+
+.comment {
+  margin-top: 0.5rem;
+  background-color: var(--verde-claro);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 850px) {
+  .comunidad-section {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .form-post button {
+    align-self: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,220 @@
+/* 🎨 Paleta ecológica */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* 🧭 Barra de navegación principal */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--azul-petroleo);
+  color: var(--blanco);
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 8px var(--sombra);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--amarillo);
+}
+
+/* 🔗 Enlaces de navegación */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-links a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+}
+
+/* 🔒 Botones de autenticación */
+.navbar-auth {
+  display: flex;
+  gap: 0.8rem;
+  margin-left: 1rem;
+}
+
+.btn-auth {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-login {
+  background-color: transparent;
+  border: 2px solid var(--verde-principal);
+  color: var(--verde-principal);
+}
+
+.btn-login:hover {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+}
+
+.btn-register {
+  background-color: var(--amarillo);
+  color: var(--azul-petroleo);
+  border: none;
+}
+
+.btn-register:hover {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+}
+
+/* 👤 Perfil y dropdown */
+.navbar-profile {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+.profile-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--amarillo);
+  transition: transform 0.2s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+/* 🔽 Dropdown del perfil */
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background-color: var(--blanco);
+  color: var(--azul-petroleo);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--sombra);
+  padding: 1rem;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.profile-dropdown.active {
+  display: flex;
+}
+
+.profile-dropdown p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.profile-dropdown hr {
+  border: none;
+  border-top: 1px solid var(--gris-claro);
+  margin: 0.5rem 0;
+}
+
+.profile-dropdown a {
+  text-decoration: none;
+  color: var(--verde-principal);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.profile-dropdown a:hover {
+  color: var(--azul-petroleo);
+}
+
+#upgradeBtn {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+#upgradeBtn:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* 🍔 Botón hamburguesa */
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--amarillo);
+}
+
+/* 🌐 Responsividad */
+@media (max-width: 850px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--azul-petroleo);
+    width: 100%;
+    visibility: hidden;  /* Inicialmente oculto */
+    opacity: 0;  /* Invisible */
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px var(--sombra);
+    z-index: 999999;
+  }
+
+  .navbar-links.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+  .navbar-links a {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .navbar-auth {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ✨ Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Ecológica - Autenticación</title>
+  <link rel="stylesheet" href="css/style_index.css" />
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/header.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- 🔹 HEADER -->
+<header class="navbar">
+  <div class="navbar-logo">🌿 App Ecológica</div>
+
+  <nav class="navbar-links" id="navbar-links">
+    <a href="index.html">Inicio</a>
+    <a href="explorar.html">Rutas</a>
+    <a href="comunidad.html">Comunidad</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="gamificacion.html">Gamificación</a>
+
+    <!-- 🔹 Botones de login/registro -->
+    <div class="navbar-auth">
+      <a href="auth.html#login" class="btn-auth btn-login">Iniciar sesión</a>
+      <a href="auth.html#register" class="btn-auth btn-register">Registrarse</a>
+    </div>
+
+    <!-- 🔹 Ícono de perfil (visible si hay sesión iniciada) -->
+    <div class="navbar-profile" id="navbarProfile" style="display: none;">
+      <img src="img/user-icon.svg" alt="Perfil" id="profileIcon" class="profile-icon" />
+      <div class="profile-dropdown" id="profileDropdown">
+        <p><strong id="userName">Usuario</strong><br><span id="userEmail">correo@ejemplo.com</span></p>
+        <hr />
+        <a href="perfil.html">Ver perfil</a>
+        <a href="#" id="logoutBtn">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+  <i class="bi bi-list" style="font-size: 1.8rem;"></i>
+</div>
+</header>
+
+
+  <!-- 🔹 CONTENIDO PRINCIPAL -->
+  <main>
+    <section class="auth-section">
+      <div class="auth-intro">
+        <h1>Bienvenido a App Ecológica 🌱</h1>
+        <p>
+          Conéctate con la naturaleza, descubre rutas sostenibles y únete a una comunidad comprometida
+          con el turismo responsable. Regístrate como <strong>turista</strong> o <strong>empresa</strong> y comienza tu experiencia ecológica.
+        </p>
+      </div>
+
+      <div class="auth-container">
+        <h2 id="formTitle">Iniciar Sesión</h2>
+        <form id="authForm">
+          <input type="email" id="email" placeholder="Correo electrónico" required />
+          <input type="password" id="password" placeholder="Contraseña" required />
+          
+          <!-- 🔹 Campo visible solo para turistas -->
+            <div class="turista-fields" id="turistaFields">
+              <input type="text" id="nombre" placeholder="Nombre completo" />
+            </div>
+
+          <!-- Campos adicionales de registro -->
+          <div id="registerFields" style="display: none;">
+            <select id="tipoUsuario">
+              <option value="">Seleccionar tipo de usuario</option>
+              <option value="turista">Turista</option>
+              <option value="empresa">Empresa</option>
+            </select>
+
+            
+
+
+            <div class="empresa-fields" id="empresaFields">
+              <input type="text" id="nombreEmpresa" placeholder="Nombre de la empresa" />
+              <input type="text" id="direccion" placeholder="Dirección" />
+              <textarea id="descripcion" placeholder="Descripción de la empresa" rows="3"></textarea>
+              <input type="text" id="precios" placeholder="Rango de precios (ej. $ - $$$)" />
+            </div>
+          </div>
+
+
+          <button type="submit" id="submitBtn">Iniciar Sesión</button>
+          <div class="toggle-link" id="toggleLink">¿No tienes cuenta? Regístrate</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Notificación flotante -->
+<div id="toast" class="toast">
+  <p id="toastMessage"></p>
+</div>
+
+  <footer class="footer">
+    <p>© 2025 App Ecológica</p>
+  </footer>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+/* 🎨 Paleta de colores */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* 🌿 Configuración base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--verde-claro);
+  color: var(--azul-petroleo);
+  margin: 0;
+  padding: 0;
+}
+
+/* 🧭 Contenido principal */
+.perfil-main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--blanco);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+/* 🧍 Sección de información del perfil */
+.perfil-info h2 {
+  color: var(--verde-principal);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.perfil-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: var(--verde-claro);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+.perfil-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--verde-principal);
+  object-fit: cover;
+}
+
+.perfil-details p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+/* ✏️ Botón editar */
+#editarPerfilBtn {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+#editarPerfilBtn:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* 📜 Historial de rutas */
+.perfil-historial {
+  margin-top: 2rem;
+}
+
+.perfil-historial h3 {
+  color: var(--verde-principal);
+  border-bottom: 2px solid var(--verde-principal);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+#historialRutas {
+  list-style: none;
+  padding: 0;
+}
+
+#historialRutas li {
+  background-color: var(--gris-claro);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px var(--sombra);
+}
+
+/* 🏅 Logros e insignias */
+.perfil-logros {
+  margin-top: 2.5rem;
+}
+
+.perfil-logros h3 {
+  color: var(--verde-principal);
+  border-bottom: 2px solid var(--verde-principal);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.logros-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.logro-card {
+  background-color: var(--verde-claro);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--sombra);
+  transition: transform 0.3s ease;
+}
+
+.logro-card:hover {
+  transform: translateY(-4px);
+}
+
+.logro-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.logro-card p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--azul-petroleo);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .perfil-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .perfil-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .perfil-main {
+    padding: 1rem;
+  }
+}

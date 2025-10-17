@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Ecológica - Descubre Bogotá</title>
+  <link rel="stylesheet" href="css/style_index.css" />
+  <link rel="stylesheet" href="css/header.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-logo">🌿 App Ecológica</div>
+
+    <nav class="navbar-links" id="navbar-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="explorar.html">Rutas</a>
+      <a href="comunidad.html">Comunidad</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="gamificacion.html">Gamificación</a>
+
+      <div class="navbar-auth">
+        <a href="auth.html#login" class="btn-auth btn-login">Iniciar sesión</a>
+        <a href="auth.html#register" class="btn-auth btn-register">Registrarse</a>
+      </div>
+
+      <div class="navbar-profile" id="navbarProfile" style="display:none;">
+        <i class="bi bi-person-circle profile-icon" id="profileIcon"></i>
+        <div class="profile-dropdown" id="profileDropdown">
+          <p><strong id="userName">Usuario</strong><br><span id="userEmail">correo@ejemplo.com</span></p>
+          <p>Suscripción: <strong id="userSubscription">Free</strong></p>
+          <button id="upgradeBtn" style="display:none;">Comprar membresía</button>
+          <hr />
+          <a href="perfil.html">Ver perfil</a>
+          <a href="#" id="logoutBtn">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hamburger" id="hamburger">
+  <i class="bi bi-list" style="font-size: 1.8rem;"></i>
+</div>
+
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+
+    <!-- 🏙️ HERO SECTION -->
+    <section class="hero">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="img/media/1.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay">
+        <h1>Descubre Bogotá</h1>
+        <p>Arte, cultura y naturaleza en un solo lugar</p>
+        <div class="hero-buttons">
+          <a href="explorar.html" class="btn-cta">Explorar rutas turísticas</a>
+          <a href="tours.html" class="btn-cta secondary">Reserva tu tour</a>
+          <a href="#destinos" class="btn-cta outline">Conocer más</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📍 DESTINOS RECOMENDADOS -->
+    <section id="destinos" class="destinos">
+      <h2>Destinos Recomendados</h2>
+      <div class="destinos-grid">
+        <div class="destino-card">
+          <img src="img/mapa.png" alt="Cerro de Monserrate">
+          <h3>Cerro de Monserrate</h3>
+          <p>Admira las vistas panorámicas de Bogotá desde este majestuoso cerro.</p>
+          <a href="monserrate.html" class="btn-destino">Ver más</a>
+        </div>
+        <div class="destino-card">
+          <img src="img/mapa.png" alt="Museo del Oro">
+          <h3>Museo del Oro</h3>
+          <p>Explora la historia del oro prehispánico y la cultura indígena.</p>
+          <a href="museo.html" class="btn-destino">Ver más</a>
+        </div>
+        <div class="destino-card">
+          <img src="img/mapa.png" alt="La Candelaria">
+          <h3>La Candelaria</h3>
+          <p>Pasea por el barrio histórico lleno de arquitectura colonial y arte callejero.</p>
+          <a href="candelaria.html" class="btn-destino">Ver más</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🚴 ACTIVIDADES Y TOURS -->
+    <section class="tours">
+      <h2>Actividades y Tours Recomendados</h2>
+      <div class="tours-grid">
+        <div class="tour-card">
+          <img src="img/mapa.png" alt="Tour en bicicleta">
+          <h3>Tour en bicicleta</h3>
+          <p>Recorre Bogotá de una manera única y ecológica.</p>
+          <button class="btn-tour">Reservar ahora</button>
+        </div>
+        <div class="tour-card">
+          <img src="img/mapa.png" alt="Tour gastronómico">
+          <h3>Tour gastronómico</h3>
+          <p>Prueba los sabores auténticos de la ciudad.</p>
+          <button class="btn-tour">Ver más</button>
+        </div>
+        <div class="tour-card">
+          <img src="img/mapa.png" alt="Senderismo en Chingaza">
+          <h3>Senderismo en Chingaza</h3>
+          <p>Explora paisajes únicos del páramo y su biodiversidad.</p>
+          <button class="btn-tour">Ver más</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 💬 TESTIMONIOS -->
+    <section class="testimonios">
+      <h2>Lo que dicen nuestros visitantes</h2>
+      <div class="testimonios-grid">
+        <div class="testimonio">
+          <p>“Bogotá superó todas mis expectativas. El tour en bicicleta fue increíble.”</p>
+          <span>- Juan Pérez, México</span>
+        </div>
+        <div class="testimonio">
+          <p>“La Candelaria es mágica, llena de color y cultura. ¡Inolvidable!”</p>
+          <span>- María Gómez, Argentina</span>
+        </div>
+      </div>
+      <a href="https://www.tripadvisor.com" target="_blank" class="btn-outline">Ver más reseñas</a>
+    </section>
+
+    <!-- 🗺️ MAPA INTERACTIVO -->
+    <section class="mapa">
+      <h2>Explora Bogotá</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.734152913469!2d-74.06594802502426!3d4.598055443644761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a2b8ec5c3f%3A0x2b08069d8a9c68b5!2sPlaza%20de%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1700000000000"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- 💰 OFERTAS Y PROMOCIONES -->
+    <section class="ofertas">
+      <h2>Ofertas y Promociones</h2>
+      <div class="ofertas-grid">
+        <div class="oferta-card">
+          <h3>Tour por la ciudad -20%</h3>
+          <p>¡Oferta válida solo hasta el fin de semana!</p>
+          <button class="btn-oferta">Reserva ahora</button>
+        </div>
+        <div class="oferta-card">
+          <h3>Entrada al Museo del Oro -15%</h3>
+          <p>Promoción especial para nuevos visitantes.</p>
+          <button class="btn-oferta">Ver promoción</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌿 CONSEJOS DE VIAJE -->
+    <section class="consejos">
+      <h2>Consejos para tu viaje</h2>
+      <ul>
+        <li><i class="bi bi-cloud-sun"></i> El clima cambia rápido, lleva una chaqueta ligera.</li>
+        <li><i class="bi bi-bus-front"></i> Usa TransMilenio o ciclovías para moverte fácilmente.</li>
+        <li><i class="bi bi-bag-check"></i> Lleva zapatos cómodos para caminar por el centro histórico.</li>
+      </ul>
+      <a href="blog.html" class="btn-outline">Ver más consejos</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 App Ecológica | Descubre Bogotá</p>
+  </footer>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/script_index.js" defer></script>
+  
+</body>
+</html>

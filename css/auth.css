@@ -1,0 +1,239 @@
+/* ================================
+   🎨 Paleta de colores global
+================================== */
+:root {
+  --verde-principal: #2e8b57;
+  --verde-claro: #e6f4ea;
+  --azul-petroleo: #183d3d;
+  --amarillo: #f6c947;
+  --gris-claro: #f4f4f4;
+  --blanco: #ffffff;
+}
+
+/* ================================
+   🌿 Estructura principal
+================================== */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--verde-claro);
+  padding: 2rem;
+}
+
+/* ================================
+   🧩 Tarjeta de autenticación
+================================== */
+.auth-container {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: var(--azul-petroleo);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* ================================
+   🧾 Formulario
+================================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--verde-principal);
+  font-size: 1rem;
+  background-color: var(--gris-claro);
+  color: var(--azul-petroleo);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--amarillo);
+  background-color: var(--blanco);
+  box-shadow: 0 0 0 3px rgba(246, 201, 71, 0.25);
+}
+
+/* ================================
+   🟩 Botones
+================================== */
+button {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--azul-petroleo);
+}
+
+/* ================================
+   🔄 Alternar login / registro
+================================== */
+.toggle-link {
+  text-align: center;
+  color: var(--azul-petroleo);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.toggle-link:hover {
+  color: var(--verde-principal);
+}
+
+/* ================================
+   🏢 Campos de empresa
+================================== */
+.empresa-fields {
+  display: none;
+  background-color: var(--verde-claro);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--verde-principal);
+  margin-top: 0.5rem;
+}
+
+.empresa-fields input,
+.empresa-fields textarea {
+  background-color: var(--blanco);
+  border-color: var(--verde-principal);
+}
+
+/* ================================
+   🌿 Sección introductoria
+================================== */
+
+.auth-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 1rem;
+  background-color: var(--gris-claro);
+  text-align: center;
+}
+
+.auth-intro h1 {
+  color: var(--azul-petroleo);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-intro p {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--gris-oscuro);
+}
+
+@media (max-width: 600px) {
+  .auth-intro h1 {
+    font-size: 2rem;
+  }
+
+  .auth-intro p {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* ================================
+   📱 Responsivo mejorado (móvil)
+================================== */
+@media (max-width: 600px) {
+  .auth-container {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .auth-container h2 {
+    font-size: 2rem;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .toggle-link {
+    font-size: 1.1rem;
+  }
+
+  .empresa-fields {
+    padding: 1.2rem;
+  }
+
+  button {
+    font-weight: 700;
+  }
+}
+
+/* Toast notificación */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast p {
+  margin: 0;
+  font-weight: 600;
+}
