@@ -1,37 +1,60 @@
 /* ================================
-   🎨 Paleta de colores global
+   🧠 IMPORTAR FUENTES
+================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ================================
+   🎨 PALETA DE COLORES GLOBAL
 ================================== */
 :root {
-  --verde-principal: #2e8b57;
-  --verde-claro: #e6f4ea;
-  --azul-petroleo: #183d3d;
-  --amarillo: #f6c947;
-  --gris-claro: #f4f4f4;
+  --verde-principal: #00a86b;
+  --verde-neon: #00ff88;
+  --azul-petroleo: #0f2027;
+  --gris-asfalto: #1a1a1a;
+  --gris-medio: #2f2f2f;
   --blanco: #ffffff;
+  --amarillo-grafiti: #f6c947;
+  --sombra: rgba(0, 0, 0, 0.4);
 }
 
 /* ================================
-   🌿 Estructura principal
+   ⚙️ RESET
 ================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+   🌿 ESTRUCTURA PRINCIPAL
+================================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--gris-asfalto) 0%, #111 100%);
+  color: var(--blanco);
+  line-height: 1.6;
+}
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--verde-claro);
   padding: 2rem;
 }
 
 /* ================================
-   🧩 Tarjeta de autenticación
+   🧩 TARJETA DE AUTENTICACIÓN
 ================================== */
 .auth-container {
-  background-color: var(--blanco);
-  padding: 2rem;
+  background-color: var(--gris-medio);
+  padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 18px var(--sombra);
   max-width: 420px;
   width: 100%;
+  border: 2px solid var(--verde-principal);
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -46,16 +69,33 @@ main {
   }
 }
 
+/* ================================
+   🧩 TÍTULO PRINCIPAL
+================================== */
 .auth-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  color: var(--amarillo-grafiti);
+  letter-spacing: 2px;
   text-align: center;
-  color: var(--azul-petroleo);
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-weight: 700;
+  position: relative;
+}
+
+.auth-container h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: var(--verde-neon);
+  margin: 0.5rem auto 0;
+  border-radius: 4px;
+  box-shadow: 0 0 6px var(--verde-neon);
 }
 
 /* ================================
-   🧾 Formulario
+   🧾 FORMULARIO
 ================================== */
 form {
   display: flex;
@@ -71,8 +111,8 @@ textarea {
   border-radius: 10px;
   border: 1.5px solid var(--verde-principal);
   font-size: 1rem;
-  background-color: var(--gris-claro);
-  color: var(--azul-petroleo);
+  background-color: #222;
+  color: var(--blanco);
   outline: none;
   transition: all 0.25s ease;
 }
@@ -80,13 +120,13 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--amarillo);
-  background-color: var(--blanco);
-  box-shadow: 0 0 0 3px rgba(246, 201, 71, 0.25);
+  border-color: var(--amarillo-grafiti);
+  background-color: var(--gris-medio);
+  box-shadow: 0 0 8px var(--amarillo-grafiti);
 }
 
 /* ================================
-   🟩 Botones
+   🟩 BOTONES
 ================================== */
 button {
   background-color: var(--verde-principal);
@@ -97,35 +137,42 @@ button {
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: var(--azul-petroleo);
+  background-color: var(--amarillo-grafiti);
+  color: var(--gris-asfalto);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--amarillo-grafiti);
 }
 
 /* ================================
-   🔄 Alternar login / registro
+   🔄 ALTERNAR LOGIN / REGISTRO
 ================================== */
 .toggle-link {
   text-align: center;
-  color: var(--azul-petroleo);
+  color: var(--verde-neon);
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .toggle-link:hover {
-  color: var(--verde-principal);
+  color: var(--amarillo-grafiti);
 }
 
 /* ================================
-   🏢 Campos de empresa
+   🏢 CAMPOS DE EMPRESA
 ================================== */
 .empresa-fields {
   display: none;
-  background-color: var(--verde-claro);
+  background-color: var(--gris-asfalto);
   padding: 1rem;
   border-radius: 10px;
   border: 1px solid var(--verde-principal);
@@ -134,27 +181,30 @@ button:hover {
 
 .empresa-fields input,
 .empresa-fields textarea {
-  background-color: var(--blanco);
+  background-color: var(--gris-medio);
   border-color: var(--verde-principal);
+  color: var(--blanco);
 }
 
 /* ================================
-   🌿 Sección introductoria
+   🌿 SECCIÓN INTRODUCTORIA
 ================================== */
-
 .auth-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   padding: 3rem 1rem;
-  background-color: var(--gris-claro);
+  background: var(--gris-asfalto);
   text-align: center;
 }
 
 .auth-intro h1 {
-  color: var(--azul-petroleo);
-  font-size: 2.2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  color: var(--amarillo-grafiti);
+  letter-spacing: 3px;
+  font-size: 2.4rem;
   margin-bottom: 0.5rem;
 }
 
@@ -162,56 +212,44 @@ button:hover {
   max-width: 600px;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--gris-oscuro);
+  color: var(--blanco);
+  opacity: 0.9;
 }
-
-@media (max-width: 600px) {
-  .auth-intro h1 {
-    font-size: 2rem;
-  }
-
-  .auth-intro p {
-    font-size: 1.2rem;
-  }
-}
-
 
 /* ================================
-   📱 Responsivo mejorado (móvil)
+   📱 RESPONSIVO
 ================================== */
 @media (max-width: 600px) {
   .auth-container {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.2rem;
     max-width: 90%;
   }
 
   .auth-container h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   input,
   select,
   textarea,
   button {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 1rem;
     border-radius: 12px;
   }
 
   .toggle-link {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .empresa-fields {
-    padding: 1.2rem;
-  }
-
-  button {
-    font-weight: 700;
+    padding: 1rem;
   }
 }
 
-/* Toast notificación */
+/* ================================
+   🔔 TOAST NOTIFICACIÓN
+================================== */
 .toast {
   position: fixed;
   top: 20px;
@@ -224,7 +262,7 @@ button:hover {
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 3000;
+  z-index: 3000; /* encima del modal */
   pointer-events: none;
 }
 

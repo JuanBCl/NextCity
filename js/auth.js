@@ -1,3 +1,13 @@
+// js/auth.js
+import { auth, db } from "./firebase.js";
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword,
+  sendEmailVerification
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const formTitle = document.getElementById("formTitle");
   const authForm = document.getElementById("authForm");
@@ -8,7 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const empresaFields = document.getElementById("empresaFields");
   const turistaFields = document.getElementById("turistaFields");
 
+  // 🔔 Contenedor del botón para reenviar correo
+  const resendContainer = document.createElement("div");
+  resendContainer.style.textAlign = "center";
+  resendContainer.style.marginTop = "10px";
+  authForm.appendChild(resendContainer);
 
+  let resendBtn; // Botón de reenviar
   let isRegister = false;
 
   // 🔄 Alternar entre login y registro
@@ -20,27 +36,24 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleLink.textContent = isRegister
       ? "¿Ya tienes cuenta? Inicia sesión"
       : "¿No tienes cuenta? Regístrate";
+    resendContainer.innerHTML = ""; // limpiar cuando cambia de modo
   });
 
-  // 👔 Mostrar u ocultar campos de empresa
+  // 👔 Mostrar u ocultar campos según tipo
   tipoUsuarioSelect.addEventListener("change", () => {
     const tipo = tipoUsuarioSelect.value;
-
-    // Mostrar campos según tipo
     empresaFields.style.display = tipo === "empresa" ? "block" : "none";
     turistaFields.style.display = tipo === "turista" ? "block" : "none";
 
     // Requerir campos específicos
     const empresaInputs = empresaFields.querySelectorAll("input, textarea");
     empresaInputs.forEach(input => (input.required = tipo === "empresa"));
-
     const nombreInput = document.getElementById("nombre");
     nombreInput.required = tipo === "turista";
   });
 
-
   // 🧠 Evento de envío de formulario
-  authForm.addEventListener("submit", (e) => {
+  authForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
@@ -49,58 +62,157 @@ document.addEventListener("DOMContentLoaded", () => {
     // 🆕 REGISTRO
     if (isRegister) {
       const tipo = tipoUsuarioSelect.value;
-
       if (!tipo) {
         showToast("Selecciona el tipo de usuario.", 2500);
         return;
       }
 
-      localStorage.setItem("tipoUsuario", tipo);
+      try {
+        // Crear usuario en Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-      // 🏢 Si es empresa, guarda sus datos
-      if (tipo === "empresa") {
-        const dataEmpresa = {
-          nombreEmpresa: document.getElementById("nombreEmpresa").value,
-          direccion: document.getElementById("direccion").value,
-          descripcion: document.getElementById("descripcion").value,
-          precios: document.getElementById("precios").value,
+        // Enviar correo de verificación
+        await sendEmailVerification(user);
+
+        // Mostrar mensaje debajo del botón
+        resendContainer.innerHTML = `
+          <p style="color:#4CAF50; margin-bottom:5px;">
+            Se ha enviado un correo de verificación. Revisa tu bandeja 📩
+          </p>
+          <button id="resendBtn" disabled class="resend-btn" style="
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: not-allowed;
+          ">
+            Reenviar correo (30s)
+          </button>
+        `;
+
+        resendBtn = document.getElementById("resendBtn");
+        startResendCountdown(resendBtn, user);
+
+        // Guardar datos del usuario
+        let userData = {
+          email: email,
+          tipoUsuario: tipo,
+          suscripcion: "Free",
+          creadoEn: new Date()
         };
-        localStorage.setItem("empresaData", JSON.stringify(dataEmpresa));
-        localStorage.setItem("userName", dataEmpresa.nombreEmpresa);
-      } else {
-        // 👤 Si es turista, usa el campo de nombre o pide uno si no existe
-        const nombre = document.getElementById("nombre").value || prompt("Ingresa tu nombre:");
-        localStorage.setItem("userName", nombre);
+
+        if (tipo === "empresa") {
+          userData = {
+            ...userData,
+            nombreEmpresa: document.getElementById("nombreEmpresa").value,
+            direccion: document.getElementById("direccion").value,
+            descripcion: document.getElementById("descripcion").value,
+            precios: document.getElementById("precios").value
+          };
+        } else {
+          userData = {
+            ...userData,
+            nombre: document.getElementById("nombre").value
+          };
+        }
+
+        // Guardar datos en Firestore
+        await setDoc(doc(db, "usuarios", user.uid), userData);
+
+        // Guardar en localStorage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userName", tipo === "empresa" ? userData.nombreEmpresa : userData.nombre);
+        localStorage.setItem("tipoUsuario", tipo);
+
+        // Si el usuario nunca ha elegido suscripción, se deja como "Free"
+        if (!localStorage.getItem("userSubscription")) {
+          localStorage.setItem("userSubscription", "Free");
+        }
+
+        showToast("Registro exitoso 🎉");
+
+      } catch (error) {
+        showToast("Error al registrar: " + error.message);
       }
-
-      // 💾 Guardar datos comunes
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem("userPassword", password);
-      localStorage.setItem("userSubscription", "Free");
-      localStorage.setItem("isLoggedIn", "true");
-
-      showToast("Registro exitoso 🎉 Redirigiendo...");
-      setTimeout(() => {
-        window.location.href = "suscripciones.html";
-      }, 2000);
     }
 
     // 🔐 INICIO DE SESIÓN
     else {
-      const storedEmail = localStorage.getItem("userEmail");
-      const storedPassword = localStorage.getItem("userPassword");
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-      if (email === storedEmail && password === storedPassword) {
-        localStorage.setItem("isLoggedIn", "true");
+        if (!user.emailVerified) {
+          showToast("Tu correo no está verificado. Revisa tu bandeja 📩");
+          resendContainer.innerHTML = `
+            <button id="resendBtn" disabled class="resend-btn" style="
+              background-color: #888;
+              color: white;
+              border: none;
+              padding: 8px 14px;
+              border-radius: 8px;
+              cursor: not-allowed;
+              margin-top: 10px;
+            ">
+              Reenviar correo (30s)
+            </button>
+          `;
+          resendBtn = document.getElementById("resendBtn");
+          startResendCountdown(resendBtn, user);
+          return;
+        }
+
         showToast("Inicio de sesión exitoso ✅");
+
+        // Guardar datos básicos
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", email);
+
+        // Obtener suscripción actual (si existe)
+        const userSubscription = localStorage.getItem("userSubscription");
+
+        // Si el usuario no tiene una suscripción, ir a suscripciones.html
         setTimeout(() => {
-          window.location.href = "index.html";
+          if (!userSubscription || userSubscription === "Free") {
+            window.location.href = "suscripciones.html";
+          } else {
+            window.location.href = "index.html";
+          }
         }, 2000);
-      } else {
-        showToast("Credenciales inválidas ❌");
+
+
+      } catch (error) {
+        showToast("Error: " + error.message);
       }
     }
   });
+
+  // 🕒 Función para iniciar el temporizador del botón de reenviar
+  function startResendCountdown(button, user) {
+    let timeLeft = 70;
+    const interval = setInterval(() => {
+      timeLeft--;
+      button.textContent = `Reenviar correo (${timeLeft}s)`;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        button.textContent = "Reenviar correo";
+        button.disabled = false;
+        button.style.backgroundColor = "#4CAF50";
+        button.style.cursor = "pointer";
+        button.addEventListener("click", async () => {
+          await sendEmailVerification(user);
+          showToast("Correo de verificación reenviado 📩");
+          button.disabled = true;
+          button.style.backgroundColor = "#888";
+          button.style.cursor = "not-allowed";
+          startResendCountdown(button, user); // reinicia el temporizador
+        }, { once: true });
+      }
+    }, 1000);
+  }
 
   // 🍃 Función para mostrar toast
   function showToast(message, duration = 2500) {
@@ -108,9 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const toastMessage = document.getElementById("toastMessage");
     toastMessage.textContent = message;
     toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, duration);
+    setTimeout(() => toast.classList.remove("show"), duration);
   }
 });

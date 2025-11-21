@@ -1,90 +1,125 @@
-/* 🎨 Paleta de colores */
+/* 🧠 IMPORTAR FUENTES (siempre al inicio) */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* 🎨 PALETA URBANA */
 :root {
-  --verde-principal: #2e8b57;
-  --verde-claro: #e6f4ea;
-  --azul-petroleo: #183d3d;
-  --amarillo: #f6c947;
-  --gris-claro: #f4f4f4;
+  --verde-principal: #00a86b;
+  --verde-neon: #00ff88;
+  --azul-petroleo: #0f2027;
+  --gris-asfalto: #1a1a1a;
+  --gris-medio: #2f2f2f;
   --blanco: #ffffff;
-  --sombra: rgba(0, 0, 0, 0.1);
+  --amarillo-grafiti: #f6c947;
+  --sombra: rgba(0, 0, 0, 0.5);
 }
 
-/* 🌿 Configuración base */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--verde-claro);
-  color: var(--azul-petroleo);
+/* RESET */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* 🧭 Contenido principal */
+/* BASE */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--gris-asfalto) 0%, #111 100%);
+  color: var(--blanco);
+  line-height: 1.6;
+}
+
+/* 🧍 PERFIL */
 .perfil-main {
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   padding: 2rem;
-  background-color: var(--blanco);
+  background: var(--gris-medio);
   border-radius: 16px;
-  box-shadow: 0 4px 12px var(--sombra);
+  box-shadow: 0 6px 18px var(--sombra);
+  border: 2px solid var(--verde-principal);
 }
 
-/* 🧍 Sección de información del perfil */
-.perfil-info h2 {
-  color: var(--verde-principal);
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+/* 🧩 TÍTULOS */
+.perfil-info h2,
+.perfil-historial h3,
+.perfil-logros h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  color: var(--amarillo-grafiti);
+  letter-spacing: 2px;
   text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
+.perfil-info h2::after,
+.perfil-historial h3::after,
+.perfil-logros h3::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: var(--verde-neon);
+  margin: 0.5rem auto 0;
+  border-radius: 4px;
+  box-shadow: 0 0 6px var(--verde-neon);
+}
+
+/* 💳 TARJETA DE PERFIL */
 .perfil-card {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background-color: var(--verde-claro);
+  background: #222;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px var(--sombra);
+  box-shadow: 0 4px 12px var(--sombra);
+  border: 1px solid var(--verde-principal);
 }
 
 .perfil-avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid var(--verde-principal);
+  border: 3px solid var(--verde-neon);
   object-fit: cover;
+  box-shadow: 0 0 8px var(--verde-neon);
 }
 
 .perfil-details p {
-  margin: 0.3rem 0;
+  margin: 0.4rem 0;
   font-size: 1rem;
+  color: var(--blanco);
 }
 
-/* ✏️ Botón editar */
+/* ✏️ BOTÓN EDITAR */
 #editarPerfilBtn {
-  background-color: var(--verde-principal);
+  background: var(--verde-principal);
   color: var(--blanco);
   border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  padding: 0.6rem 1.4rem;
   cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s ease;
+  font-weight: 600;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #editarPerfilBtn:hover {
-  background-color: var(--azul-petroleo);
+  background-color: var(--amarillo-grafiti);
+  color: var(--gris-asfalto);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--amarillo-grafiti);
 }
 
-/* 📜 Historial de rutas */
+/* 🧭 HISTORIAL */
 .perfil-historial {
-  margin-top: 2rem;
-}
-
-.perfil-historial h3 {
-  color: var(--verde-principal);
-  border-bottom: 2px solid var(--verde-principal);
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  background: #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--verde-principal);
 }
 
 #historialRutas {
@@ -93,23 +128,27 @@ body {
 }
 
 #historialRutas li {
-  background-color: var(--gris-claro);
+  background-color: var(--gris-medio);
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
-  box-shadow: 0 2px 4px var(--sombra);
+  margin-bottom: 0.7rem;
+  border: 1px solid var(--verde-principal);
+  color: var(--blanco);
+  transition: 0.3s;
 }
 
-/* 🏅 Logros e insignias */
+#historialRutas li:hover {
+  background-color: var(--azul-petroleo);
+  transform: scale(1.02);
+}
+
+/* 🏅 LOGROS */
 .perfil-logros {
   margin-top: 2.5rem;
-}
-
-.perfil-logros h3 {
-  color: var(--verde-principal);
-  border-bottom: 2px solid var(--verde-principal);
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--verde-principal);
 }
 
 .logros-container {
@@ -119,16 +158,18 @@ body {
 }
 
 .logro-card {
-  background-color: var(--verde-claro);
+  background: var(--gris-medio);
+  border: 1px solid var(--verde-principal);
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 6px var(--sombra);
-  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px var(--sombra);
+  transition: 0.3s;
 }
 
 .logro-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 0 10px var(--verde-neon);
 }
 
 .logro-card img {
@@ -136,15 +177,17 @@ body {
   height: 60px;
   object-fit: contain;
   margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 5px var(--verde-neon));
 }
 
 .logro-card p {
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--azul-petroleo);
+  color: var(--blanco);
 }
 
-/* 📱 Responsive */
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
   .perfil-card {
     flex-direction: column;
@@ -152,11 +195,11 @@ body {
   }
 
   .perfil-avatar {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .perfil-main {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 }

@@ -12,14 +12,14 @@
 
   <!-- HEADER / NAVBAR -->
   <header class="navbar">
-    <div class="navbar-logo">🌿 App Ecológica</div>
+    <div class="navbar-logo">NEXTCITY</div>
 
     <nav class="navbar-links" id="navbar-links">
       <a href="index.html" class="active">Inicio</a>
       <a href="explorar.html">Rutas</a>
       <a href="comunidad.html">Comunidad</a>
       <a href="perfil.html">Perfil</a>
-      <a href="gamificacion.html">Gamificación</a>
+      <a href="descargar.html">Gamificación APK</a>
 
       <div class="navbar-auth">
         <a href="auth.html#login" class="btn-auth btn-login">Iniciar sesión</a>
@@ -40,8 +40,8 @@
     </nav>
 
     <div class="hamburger" id="hamburger">
-  <i class="bi bi-list" style="font-size: 1.8rem;"></i>
-</div>
+      <i class="bi bi-list" style="font-size: 1.8rem;"></i>
+    </div>
 
   </header>
 
@@ -69,22 +69,22 @@
       <h2>Destinos Recomendados</h2>
       <div class="destinos-grid">
         <div class="destino-card">
-          <img src="img/mapa.png" alt="Cerro de Monserrate">
+          <img src="img/monserrate1.webp" alt="Cerro de Monserrate">
           <h3>Cerro de Monserrate</h3>
           <p>Admira las vistas panorámicas de Bogotá desde este majestuoso cerro.</p>
-          <a href="auth.html" class="btn-destino">Ver más</a>
+          <a href="#" class="btn-destino">Ver más</a>
         </div>
         <div class="destino-card">
-          <img src="img/mapa.png" alt="Museo del Oro">
+          <img src="img/museo_oro2.webp" alt="Museo del Oro">
           <h3>Museo del Oro</h3>
           <p>Explora la historia del oro prehispánico y la cultura indígena.</p>
-          <a href="auth.html" class="btn-destino">Ver más</a>
+          <a href="#" class="btn-destino">Ver más</a>
         </div>
         <div class="destino-card">
-          <img src="img/mapa.png" alt="La Candelaria">
+          <img src="img/candelaria.webp" alt="La Candelaria">
           <h3>La Candelaria</h3>
           <p>Pasea por el barrio histórico lleno de arquitectura colonial y arte callejero.</p>
-          <a href="auth.html" class="btn-destino">Ver más</a>
+          <a href="#" class="btn-destino">Ver más</a>
         </div>
       </div>
     </section>
@@ -94,19 +94,19 @@
       <h2>Actividades y Tours Recomendados</h2>
       <div class="tours-grid">
         <div class="tour-card">
-          <img src="img/mapa.png" alt="Tour en bicicleta">
+          <img src="img/ciclovia2.webp" alt="Tour en bicicleta">
           <h3>Tour en bicicleta</h3>
           <p>Recorre Bogotá de una manera única y ecológica.</p>
           <button class="btn-tour">Reservar ahora</button>
         </div>
         <div class="tour-card">
-          <img src="img/mapa.png" alt="Tour gastronómico">
+          <img src="img/plaza_perseverancia1.webp" alt="Tour gastronómico">
           <h3>Tour gastronómico</h3>
           <p>Prueba los sabores auténticos de la ciudad.</p>
           <button class="btn-tour">Ver más</button>
         </div>
         <div class="tour-card">
-          <img src="img/mapa.png" alt="Senderismo en Chingaza">
+          <img src="img/parque_bolivar2.webp" alt="Senderismo en Chingaza">
           <h3>Senderismo en Chingaza</h3>
           <p>Explora paisajes únicos del páramo y su biodiversidad.</p>
           <button class="btn-tour">Ver más</button>
@@ -127,7 +127,7 @@
           <span>- María Gómez, Argentina</span>
         </div>
       </div>
-      <a href="https://www.tripadvisor.com" target="_blank" class="btn-outline">Ver más reseñas</a>
+      <a href="#" class="btn-outline">Ver más reseñas</a>
     </section>
 
     <!-- 🗺️ MAPA INTERACTIVO -->
@@ -163,7 +163,7 @@
         <li><i class="bi bi-bus-front"></i> Usa TransMilenio o ciclovías para moverte fácilmente.</li>
         <li><i class="bi bi-bag-check"></i> Lleva zapatos cómodos para caminar por el centro histórico.</li>
       </ul>
-      <a href="auth.html" class="btn-outline">Ver más consejos</a>
+      <a href="#" class="btn-outline">Ver más consejos</a>
     </section>
 
   </main>
@@ -174,7 +174,21 @@
   </footer>
 
   <script src="js/header.js" defer></script>
-  <script src="js/script_index.js" defer></script>
-  
+
+  <!-- 🚀 SCRIPT que redirige los botones del main a descargar.html -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const botones = document.querySelectorAll("main button, main a");
+      botones.forEach(btn => {
+        if (!btn.closest(".hero")) {
+          btn.addEventListener("click", e => {
+            e.preventDefault();
+            window.location.href = "descargar.html";
+          });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>

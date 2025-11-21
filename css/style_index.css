@@ -1,15 +1,23 @@
-/* 🎨 PALETA DE COLORES */
+
+/* 🧠 FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap');
+
+/* 🎨 PALETA DE COLORES URBANA */
 :root {
-  --verde-principal: #2e8b57;
-  --verde-claro: #e6f4ea;
-  --azul-petroleo: #183d3d;
-  --amarillo: #f6c947;
-  --gris-claro: #f4f4f4;
+  --negro: #0a0a0a;
+  --gris-oscuro: #1c1c1c;
+  --gris-medio: #2f2f2f;
+  --gris-claro: #e0e0e0;
   --blanco: #ffffff;
-  --sombra: rgba(0, 0, 0, 0.1);
+  --amarillo-neon: #f6c947;
+  --verde-neon: #39ff14;
+  --rojo-graf: #ff1744;
+  --azul-electric: #00bcd4;
+  --sombra: rgba(0, 0, 0, 0.4);
 }
 
-/* RESETEO GENERAL */
+
+/* RESET GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -18,50 +26,58 @@
 }
 
 body {
-  background-color: var(--gris-claro);
-  color: var(--azul-petroleo);
+  background: linear-gradient(180deg, var(--negro) 0%, var(--gris-oscuro) 100%);
+  color: var(--gris-claro);
   line-height: 1.6;
 }
 
-/* 🔹 SECCIÓN HERO */
+/* 🔤 TÍTULOS */
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blanco);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================== */
+/* 🎬 HERO SECTION */
 .hero {
   position: relative;
   height: 90vh;
   overflow: hidden;
+  background: var(--negro);
 }
 
 .hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(60%);
+  filter: brightness(50%) contrast(120%);
 }
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: var(--blanco);
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--blanco);
   text-align: center;
   padding: 2rem;
 }
 
 .hero-overlay h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 10px var(--rojo-graf);
 }
 
 .hero-overlay p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color: var(--amarillo-neon);
   margin-top: 1rem;
-  color: var(--verde-claro);
 }
 
 .hero-buttons {
@@ -72,43 +88,47 @@ body {
   justify-content: center;
 }
 
+/* 🧱 BOTONES STREET */
 .btn-cta {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 25px;
+  padding: 0.8rem 1.8rem;
+  border: 2px solid var(--verde-neon);
+  border-radius: 8px;
+  background: var(--gris-medio);
+  color: var(--verde-neon);
   font-weight: 600;
-  text-decoration: none;
   cursor: pointer;
-  transition: 0.3s;
-  background-color: var(--verde-principal);
-  color: var(--blanco);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
 .btn-cta:hover {
-  background-color: #256d46;
+  background: var(--verde-neon);
+  color: var(--negro);
+  box-shadow: 0 0 15px var(--verde-neon);
   transform: scale(1.05);
 }
 
 .btn-cta.secondary {
-  background-color: var(--amarillo);
-  color: var(--azul-petroleo);
+  border-color: var(--amarillo-neon);
+  color: var(--amarillo-neon);
 }
 
-.btn-cta.outline {
-  border: 2px solid var(--blanco);
-  background: transparent;
+.btn-cta.secondary:hover {
+  background: var(--amarillo-neon);
+  color: var(--negro);
+  box-shadow: 0 0 15px var(--amarillo-neon);
 }
 
-/* 🔹 DESTINOS */
+/* ============================== */
+/* 🌆 DESTINOS */
 .destinos {
   padding: 4rem 2rem;
-  background-color: var(--blanco);
+  background: linear-gradient(135deg, var(--gris-oscuro), var(--negro));
   text-align: center;
 }
 
 .destinos h2 {
-  font-size: 2rem;
-  color: var(--azul-petroleo);
+  font-size: 2.2rem;
   margin-bottom: 2rem;
 }
 
@@ -119,100 +139,117 @@ body {
 }
 
 .destino-card {
-  background-color: var(--verde-claro);
-  border-radius: 10px;
-  overflow: hidden;
+  background: linear-gradient(145deg, #1a1a1a, #121212);
+  border: 1px solid var(--gris-medio);
+  border-radius: 12px;
   box-shadow: 0 4px 10px var(--sombra);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .destino-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 15px var(--verde-neon);
 }
 
 .destino-card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 3px solid var(--verde-neon);
 }
 
 .destino-card h3 {
-  color: var(--azul-petroleo);
   margin: 1rem 0 0.5rem;
 }
 
 .destino-card p {
   padding: 0 1rem;
   font-size: 0.95rem;
+  color: var(--gris-claro);
 }
 
 .btn-destino {
   display: inline-block;
+  padding: 0.5rem 1.2rem;
   margin: 1rem 0;
-  padding: 0.5rem 1rem;
-  background-color: var(--verde-principal);
+  background: var(--rojo-graf);
   color: var(--blanco);
-  border-radius: 5px;
+  border-radius: 6px;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .btn-destino:hover {
-  background-color: #256d46;
+  background: var(--verde-neon);
+  color: var(--negro);
 }
 
-/* 🔹 TOURS */
+/* ============================== */
+/* 🚗 TOURS */
 .tours {
   padding: 4rem 2rem;
-  background-color: var(--gris-claro);
+  background: var(--negro);
   text-align: center;
+}
+
+.tours h2 {
+  margin-bottom: 2rem;
 }
 
 .tours-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .tour-card {
-  background-color: var(--blanco);
+  background: #121212;
+  border: 1px solid #333;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 10px var(--sombra);
   transition: 0.3s;
 }
 
 .tour-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 12px var(--amarillo-neon);
 }
 
 .tour-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  border-bottom: 2px solid var(--amarillo-neon);
 }
 
 .btn-tour {
-  background-color: var(--verde-principal);
-  color: var(--blanco);
+  background: var(--amarillo-neon);
+  color: var(--negro);
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
   margin: 1rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn-tour:hover {
-  background-color: #256d46;
+  background: var(--verde-neon);
+  color: var(--negro);
+  box-shadow: 0 0 12px var(--verde-neon);
 }
 
-/* 🔹 TESTIMONIOS */
+/* ============================== */
+/* 💬 TESTIMONIOS */
 .testimonios {
-  background-color: var(--blanco);
   padding: 4rem 2rem;
+  background: linear-gradient(180deg, #111, #1a1a1a);
   text-align: center;
+}
+
+.testimonios h2 {
+  margin-bottom: 2rem;
 }
 
 .testimonios-grid {
@@ -224,44 +261,65 @@ body {
 }
 
 .testimonio {
-  background-color: var(--verde-claro);
+  background: #1c1c1c;
+  border-left: 4px solid var(--amarillo-neon);
   padding: 1.5rem;
   border-radius: 10px;
   font-style: italic;
-  box-shadow: 0 2px 6px var(--sombra);
+  color: var(--gris-claro);
+  box-shadow: 0 3px 8px var(--sombra);
 }
 
+/* ============================== */
+/* 🎯 BOTÓN OUTLINE */
 .btn-outline {
-  border: 2px solid var(--verde-principal);
-  color: var(--verde-principal);
+  border: 2px solid var(--verde-neon);
+  color: var(--verde-neon);
   padding: 0.6rem 1.2rem;
   border-radius: 25px;
   text-decoration: none;
   transition: 0.3s;
+  display: inline-block;
+  font-weight: 600;
 }
 
 .btn-outline:hover {
-  background-color: var(--verde-principal);
-  color: var(--blanco);
+  background-color: var(--verde-neon);
+  color: var(--negro);
+  box-shadow: 0 0 12px var(--verde-neon);
 }
 
-/* 🔹 MAPA */
+/* ============================== */
+/* 🗺️ MAPA */
 .mapa {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--verde-claro);
+  background: #121212;
+}
+
+.mapa h2 {
+  margin-bottom: 2rem;
 }
 
 .mapa iframe {
+  width: 100%;
+  max-width: 900px;
+  height: 400px;
+  border: 2px solid var(--verde-neon);
   border-radius: 10px;
-  box-shadow: 0 4px 10px var(--sombra);
+  box-shadow: 0 0 15px var(--verde-neon);
 }
 
-/* 🔹 OFERTAS */
+/* ============================== */
+/* 🎟️ OFERTAS */
 .ofertas {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--blanco);
+  background: var(--negro);
+}
+
+.ofertas h2 {
+  margin-bottom: 2rem;
 }
 
 .ofertas-grid {
@@ -271,33 +329,45 @@ body {
 }
 
 .oferta-card {
-  background-color: var(--verde-claro);
+  background: #1b1b1b;
+  border: 1px solid var(--gris-medio);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 10px var(--sombra);
+  transition: 0.3s;
+}
+
+.oferta-card:hover {
+  box-shadow: 0 0 12px var(--amarillo-neon);
+  transform: translateY(-5px);
 }
 
 .btn-oferta {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: var(--amarillo);
+  background: var(--verde-neon);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: var(--azul-petroleo);
-  font-weight: 600;
+  color: var(--negro);
+  font-weight: 700;
   transition: 0.3s;
 }
 
 .btn-oferta:hover {
-  background-color: #e5b83f;
+  background: var(--amarillo-neon);
+  box-shadow: 0 0 12px var(--amarillo-neon);
 }
 
-/* 🔹 CONSEJOS */
+/* ============================== */
+/* 🧢 CONSEJOS */
 .consejos {
-  background-color: var(--verde-claro);
+  background: linear-gradient(135deg, #111, #1f1f1f);
   padding: 4rem 2rem;
   text-align: center;
+}
+
+.consejos h2 {
+  margin-bottom: 2rem;
 }
 
 .consejos ul {
@@ -306,18 +376,21 @@ body {
 }
 
 .consejos li {
-  margin-bottom: 0.8rem;
+  color: var(--gris-claro);
+  font-size: 1rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
-/* 🔹 FOOTER */
+/* ============================== */
+/* 🏁 FOOTER */
 .footer {
-  background-color: var(--azul-petroleo);
-  color: var(--blanco);
+  background: #0a0a0a;
+  color: var(--gris-claro);
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
+  border-top: 2px solid var(--verde-neon);
 }
