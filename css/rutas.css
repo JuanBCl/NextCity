@@ -1,0 +1,206 @@
+/* ================================
+   🧠 IMPORTAR FUENTES
+================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ================================
+   🎨 PALETA GLOBAL
+================================== */
+:root {
+  --verde-principal: #00a86b;
+  --verde-neon: #00ff88;
+  --azul-petroleo: #0f2027;
+  --gris-asfalto: #1a1a1a;
+  --gris-medio: #2f2f2f;
+  --blanco: #ffffff;
+  --amarillo-grafiti: #f6c947;
+  --sombra: rgba(0, 0, 0, 0.4);
+}
+
+/* ================================
+   🌌 FONDO GENERAL
+================================== */
+body {
+  background: linear-gradient(180deg, var(--gris-asfalto) 0%, #111 100%);
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  color: var(--blanco);
+}
+
+/* ================================
+   🟩 CONTENEDOR PRINCIPAL
+================================== */
+.rutas-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+  background: var(--gris-medio);
+  border-radius: 22px;
+  border: 2px solid var(--verde-principal);
+  box-shadow: 0 6px 25px var(--sombra);
+}
+
+/* ================================
+   📝 TÍTULO
+================================== */
+h1 {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+  color: var(--amarillo-grafiti);
+  margin-bottom: 10px;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 4px;
+  background: var(--verde-neon);
+  margin: 0.6rem auto 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--verde-neon);
+}
+
+/* ================================
+   📄 DESCRIPCIÓN
+================================== */
+.descripcion {
+  text-align: center;
+  font-size: 1.25rem;
+  opacity: 0.85;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+/* ================================
+   📍 LISTA DE RUTAS
+================================== */
+.rutas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ================================
+   🟪 ITEM DE RUTA
+================================== */
+.ruta-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--azul-petroleo);
+  border: 2px solid var(--verde-principal);
+  border-radius: 14px;
+  padding: 22px 26px;
+  font-size: 1.45rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.ruta-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px var(--sombra);
+}
+
+/* ================================
+   🟩 CHECKBOX CUSTOM
+================================== */
+input[type="checkbox"] {
+  display: none;
+}
+
+.styled-checkbox {
+  min-width: 34px;
+  min-height: 34px;
+  border: 3px solid var(--verde-neon);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  font-size: 22px;
+  color: var(--gris-asfalto);
+}
+
+/* cuando está activo */
+input:checked + .styled-checkbox {
+  background: var(--verde-neon);
+  transform: scale(1.12);
+  box-shadow: 0 0 10px var(--verde-neon);
+}
+
+input:checked + .styled-checkbox::after {
+  content: "✔";
+  font-weight: bold;
+}
+
+/* ================================
+   🟨 BOTÓN GUARDAR
+================================== */
+.btn-guardar {
+  margin-top: 35px;
+  padding: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+  background: var(--amarillo-grafiti);
+  color: var(--gris-asfalto);
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-guardar:hover {
+  transform: translateY(-3px);
+  background: #ffdd74;
+  box-shadow: 0 4px 14px var(--sombra);
+}
+
+/* ================================
+   📱 RESPONSIVE MUY OPTIMIZADO
+================================== */
+@media (max-width: 600px) {
+  .rutas-container {
+    padding: 32px 22px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  .descripcion {
+    font-size: 1.15rem;
+  }
+
+  .ruta-item {
+    padding: 22px;
+    font-size: 1.35rem;
+  }
+
+  .styled-checkbox {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .btn-guardar {
+    font-size: 1.4rem;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .ruta-item {
+    padding: 18px;
+    font-size: 1.25rem;
+  }
+}

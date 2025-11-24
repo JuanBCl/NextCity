@@ -128,7 +128,7 @@ btnConfirmarPago.addEventListener("click", (e) => {
 
   setTimeout(() => {
     modalPago.style.display = "none";
-    window.location.href = "index.html";
+    window.location.href = "rutas.html";
   }, 2500);
 });
 

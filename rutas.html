@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar Rutas</title>
+  <link rel="stylesheet" href="css/rutas.css">
+</head>
+<body>
+
+<div class="rutas-container">
+
+  <h1>Selecciona tus Rutas</h1>
+  <p class="descripcion">Escoge los lugares que deseas visitar para tu recorrido turístico.</p>
+
+  <div class="rutas-lista">
+
+    <label class="ruta-item">
+      <input type="checkbox" id="humedal">
+      <span class="styled-checkbox"></span>
+      <span class="ruta-nombre">Humedal La Conejera</span>
+    </label>
+
+    <label class="ruta-item">
+      <input type="checkbox" id="monserrate">
+      <span class="styled-checkbox"></span>
+      <span class="ruta-nombre">Cerro de Monserrate</span>
+    </label>
+
+    <label class="ruta-item">
+      <input type="checkbox" id="universidad">
+      <span class="styled-checkbox"></span>
+      <span class="ruta-nombre">Universidad Ecológica</span>
+    </label>
+
+  </div>
+
+    <button id="btnGuardar">Guardar selección</button>
+  <p class="mensaje" id="mensaje"></p>
+
+</div>
+
+<script type="module" src="js/rutas.js"></script>
+
+<script type="module">
+  import { guardarSeleccion } from "./js/rutas.js";
+
+  document.getElementById("btnGuardar").addEventListener("click", guardarSeleccion);
+</script>
+
+</body>
+</html>
