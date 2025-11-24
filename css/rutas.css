@@ -141,7 +141,7 @@ input:checked + .styled-checkbox::after {
 /* ================================
    🟨 BOTÓN GUARDAR
 ================================== */
-.btn-guardar {
+#btnGuardar {
   margin-top: 35px;
   padding: 16px;
   font-size: 1.5rem;
@@ -155,7 +155,7 @@ input:checked + .styled-checkbox::after {
   transition: 0.25s ease;
 }
 
-.btn-guardar:hover {
+#btnGuardar:hover {
   transform: translateY(-3px);
   background: #ffdd74;
   box-shadow: 0 4px 14px var(--sombra);
@@ -188,7 +188,7 @@ input:checked + .styled-checkbox::after {
     min-height: 32px;
   }
 
-  .btn-guardar {
+  #btnGuardar {
     font-size: 1.4rem;
     padding: 18px;
   }
