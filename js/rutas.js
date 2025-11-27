@@ -46,6 +46,7 @@ export function guardarSeleccion() {
       document.getElementById("mensaje").style.color = "#2e7d32";
       document.getElementById("mensaje").innerText = "Rutas guardadas correctamente.";
 
+      
       // Redirección después de guardar
       setTimeout(() => {
         window.location.href = "index.html"; // Cambia si tu pantalla de inicio es diferente

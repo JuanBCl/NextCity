@@ -1,3 +1,6 @@
+import { auth, db } from "./firebase.js";
+import { doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
 // 🌿 Variables del DOM
 const modalPago = document.getElementById("modalPago");
 const cerrarModal = document.getElementById("cerrarModal");
@@ -93,7 +96,7 @@ cerrarModal.addEventListener("click", () => {
 });
 
 // 🟢 Confirmar pago (validación de campos)
-btnConfirmarPago.addEventListener("click", (e) => {
+btnConfirmarPago.addEventListener("click", async (e) => {
   e.preventDefault();
 
   const metodo = document.querySelector('input[name="metodo"]:checked')?.value;
@@ -103,7 +106,7 @@ btnConfirmarPago.addEventListener("click", (e) => {
     return;
   }
 
-  // ⚠️ Validar campos
+  // Validar campos
   const inputs = formPago.querySelectorAll("input[required]");
   let formularioValido = true;
 
@@ -121,16 +124,51 @@ btnConfirmarPago.addEventListener("click", (e) => {
     return;
   }
 
-  // ✅ Guardar suscripción
   const planSeleccionado = planSeleccionadoElemento.textContent;
+
+  // Guardar en localStorage
   localStorage.setItem("userSubscription", planSeleccionado);
+  //localStorage.setItem("hasCompletedSubscription", "true");
+
+  // 🔥 Guardar en Firebase (Free o Premium)
+  try {
+    if (auth.currentUser) {
+      const userRef = doc(db, "usuarios", auth.currentUser.uid);
+      await updateDoc(userRef, {
+        suscripcion: planSeleccionado
+      });
+    }
+  } catch (error) {
+    console.error("Error guardando suscripción en Firebase:", error);
+  }
+
   mostrarToast(`✅ Suscripción ${planSeleccionado} activada con ${metodo}.`);
 
-  setTimeout(() => {
+  setTimeout(async () => {
     modalPago.style.display = "none";
-    window.location.href = "rutas.html";
+
+    if (auth.currentUser) {
+      const userRef = doc(db, "usuarios", auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+
+        // 👉 Si NO tiene rutas, significa que es la primera vez
+        if (!userData.rutas || userData.rutas.length === 0) {
+          window.location.href = "rutas.html";
+          return;
+        }
+      }
+    }
+
+    // 👉 Si ya tiene rutas, envía al home
+    window.location.href = "index.html";
+
   }, 2500);
+
 });
+
 
 // 🔔 Toast visual
 function mostrarToast(mensaje) {

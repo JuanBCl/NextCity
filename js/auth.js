@@ -6,7 +6,7 @@ import {
   sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const formTitle = document.getElementById("formTitle");
@@ -140,54 +140,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 🔐 INICIO DE SESIÓN
-    else {
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+    // 🔐 INICIO DE SESIÓN
+else {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
 
-        if (!user.emailVerified) {
-          showToast("Tu correo no está verificado. Revisa tu bandeja 📩");
-          resendContainer.innerHTML = `
-            <button id="resendBtn" disabled class="resend-btn" style="
-              background-color: #888;
-              color: white;
-              border: none;
-              padding: 8px 14px;
-              border-radius: 8px;
-              cursor: not-allowed;
-              margin-top: 10px;
-            ">
-              Reenviar correo (30s)
-            </button>
-          `;
-          resendBtn = document.getElementById("resendBtn");
-          startResendCountdown(resendBtn, user);
-          return;
-        }
-
-        showToast("Inicio de sesión exitoso ✅");
-
-        // Guardar datos básicos
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userEmail", email);
-
-        // Obtener suscripción actual (si existe)
-        const userSubscription = localStorage.getItem("userSubscription");
-
-        // Si el usuario no tiene una suscripción, ir a suscripciones.html
-        setTimeout(() => {
-          if (!userSubscription || userSubscription === "Free") {
-            window.location.href = "suscripciones.html";
-          } else {
-            window.location.href = "index.html";
-          }
-        }, 2000);
-
-
-      } catch (error) {
-        showToast("Error: " + error.message);
-      }
+    if (!user.emailVerified) {
+      showToast("Tu correo no está verificado. Revisa tu bandeja 📩");
+      resendContainer.innerHTML = `
+        <button id="resendBtn" disabled class="resend-btn" style="
+          background-color: #888;
+          color: white;
+          border: none;
+          padding: 8px 14px;
+          border-radius: 8px;
+          cursor: not-allowed;
+          margin-top: 10px;
+        ">
+          Reenviar correo (30s)
+        </button>
+      `;
+      resendBtn = document.getElementById("resendBtn");
+      startResendCountdown(resendBtn, user);
+      return;
     }
+
+    showToast("Inicio de sesión exitoso ✅");
+
+    // Guardar datos básicos temporales si quieres (opcional)
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", email);
+
+    // =====> LEER DATOS DEL USUARIO EN FIRESTORE
+    const userDocRef = doc(db, "usuarios", user.uid);
+    const userSnap = await getDoc(userDocRef);
+
+    if (!userSnap.exists()) {
+      showToast("Error: datos del usuario no encontrados en Firestore.", 3000);
+      return;
+    }
+
+    const userData = userSnap.data();
+    const tipoUsuario = userData.tipoUsuario;
+    const suscripcion = userData.suscripcion;
+    const rutas = userData.rutas || null;
+
+    // Decide a dónde dirigir al usuario
+    setTimeout(() => {
+      if (!suscripcion || suscripcion === "Free") {
+        window.location.href = "suscripciones.html";
+        return;
+      }
+
+      if (tipoUsuario === "turista" && !rutas) {
+        window.location.href = "rutas.html";
+        return;
+      }
+
+      window.location.href = "index.html";
+    }, 1200);
+
+  } catch (error) {
+    showToast("Error: " + error.message);
+  }
+}
+
+
   });
 
   // 🕒 Función para iniciar el temporizador del botón de reenviar
